@@ -1,6 +1,6 @@
 use clap::{ArgMatches, App, SubCommand, Arg};
 
-const INSERT_SYMBOL:&str = "❯";
+const INSERT_SYMBOL:&str = "λ";
 const COMMAND_SYMBOL:&str = "⬢";
 const COMMAND_KEYMAP:&str = "vicmd";
 const NO_ERROR:&str = "0";

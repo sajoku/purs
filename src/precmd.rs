@@ -1,5 +1,5 @@
 use std::env;
-use ansi_term::Colour::{Cyan, Blue, Red, Green, Purple};
+use ansi_term::Colour::{Cyan, Blue, Red, Green, Purple, White};
 use ansi_term::{ANSIStrings, ANSIGenericString};
 use git2::{self, Repository, StatusOptions};
 use regex::Regex;
@@ -19,7 +19,7 @@ fn repo_status(r: &Repository, detailed: bool) -> Option<String> {
   let mut out = vec![];
 
   if let Some(name) = get_head_shortname(r) {
-    out.push(Cyan.paint(name));
+    out.push(White.dimmed().paint(name));
   }
 
   if !detailed {
@@ -194,7 +194,7 @@ pub fn display(sub_matches: &ArgMatches) {
     Ok(repo) => repo_status(&repo, sub_matches.is_present("git-detailed")),
     Err(_e) => None,
   };
-  let display_branch = Cyan.paint(branch.unwrap_or_default());
+  let display_branch = White.dimmed().paint(branch.unwrap_or_default());
 
   println!("");
   println!("{} {}", display_path, display_branch);
